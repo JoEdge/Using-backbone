@@ -38,3 +38,7 @@ var thanksgiving = new Holidays({
   food: "Roasted Turkey",
   plant: "Cranberries"
 });
+
+all_holidays.fetch().done(function () {
+  console.log(all_holidays);
+});
