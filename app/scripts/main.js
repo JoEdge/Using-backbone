@@ -1,16 +1,3 @@
-var Holidays = Backbone.Model.extend ({
-
-  initialize: function () {
-    //console.log("Here we go!");
-  }
-
-});
-
-var HolidaysCollection = Backbone.Collection.extend ({
-  model: Holidays,
-  url: "http://tiy-atl-fe-server.herokuapp.com/collections/joanna3"
-
-});
 
 var all_holidays = new HolidaysCollection;
 
@@ -40,5 +27,7 @@ var thanksgiving = new Holidays({
 });
 
 all_holidays.fetch().done(function () {
-  console.log(all_holidays);
+  var holidaysView = new HolidaysView ({
+    collection: all_holidays
+  });
 });
