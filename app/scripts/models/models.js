@@ -1,22 +1,21 @@
 var Holiday = Backbone.Model.extend ({
 
     defaults: {
-    name: '',
-    date: '',
-    character: '',
-    food: '',
-    plant: ''
+    name: "",
+    date: "",
+    character: "",
+    food: "",
+    plant: ""
   },
 
   idAttribute: "_id",
 
   initialize: function () {
-    var cheers = this.get('name');
-    //console.log("Here we go!");
+    var n = this.get('name');
+    console.log( n + ' has been added');
   }
 
 });
-
 
   var xmas = new Holiday({
     name: "Christmas",
@@ -31,7 +30,7 @@ var Holiday = Backbone.Model.extend ({
     date: "October 31st",
     character: "Ghosts",
     food: "Candy",
-    plant: "Pumpkin"
+    plant: "Pumpkins"
   });
 
   var thanksgiving = new Holiday({
