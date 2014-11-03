@@ -1,6 +1,6 @@
 var HolidaysView = Backbone.View.extend ({
 
-  tagName: 'ul',
+  tagName: 'div',
   className: 'happy',
 
 
