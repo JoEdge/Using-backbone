@@ -20,12 +20,12 @@ App.Views.AddHolidays = Backbone.View.extend ({
 
   addNewHoliday: function(e) {
     e.preventDefault();
-    alert('I was submitted');
 
   //grab info from input
   var holiday_name = $("#name").val();
   var holiday_date = $("#date").val();
   var holiday_character = $("#character").val();
+  var holiday_symbol = $("#symbol").val();
   var holiday_food = $("#food").val();
   var holiday_plant = $("#plant").val();
 
@@ -34,6 +34,7 @@ App.Views.AddHolidays = Backbone.View.extend ({
     name: holiday_name,
     date: holiday_date,
     character: holiday_character,
+    symbol: holiday_symbol,
     food: holiday_food,
     plant: holiday_plant
   });
@@ -44,8 +45,6 @@ App.Views.AddHolidays = Backbone.View.extend ({
 
     //save our holiday
     smile.save();
-
-    console.log(smile);
 
     //clear my form
     $("#holidayForm")[0].reset();

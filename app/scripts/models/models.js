@@ -6,6 +6,7 @@ App.Models.Holiday = Backbone.Model.extend ({
     name: "",
     date: "",
     character: "",
+    symbol: "",
     food: "",
     plant: ""
   },

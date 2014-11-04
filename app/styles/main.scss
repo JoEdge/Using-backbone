@@ -18,9 +18,46 @@ body {
   background-color: #eee;
   border-radius: 6px;
   padding: 60px;
+
   h1 {
     font-size: 60px;
     line-height: 1;
     letter-spacing: -1px;
   }
+
+  #happy_holidays ul {
+    padding: 0px;
+  }
+
+  li {
+    background-color: hsla(215,55%,39%,1);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    list-style:none;
+
+    &:hover {
+      background-color: hsla(349,100%,43%,1);
+    }
+  }
+
+  #name, #character, #food {
+    padding-right:40px;
+  }
+
+  #date, #symbol, #plant {
+    float: right;
+    padding-right:40px;
+  }
+
+  #addButton {
+    border-radius: 10px;
+    margin-top:10px;
+    margin-left:29%;
+    color: white;
+    background-color: HSLA(280, 100%, 50%, 1);
+  }
+
 }
