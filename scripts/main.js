@@ -1,4 +1,6 @@
-var Holiday = Backbone.Model.extend ({
+(function () {
+
+App.Models.Holiday = Backbone.Model.extend ({
 
     defaults: {
     name: "",
@@ -17,98 +19,49 @@ var Holiday = Backbone.Model.extend ({
 
 });
 
-  var xmas = new Holiday({
-    name: "Christmas",
-    date: "December 25th",
-    character: "Santa Claus",
-    food: "Sugar Plums",
-    plant: "Mistletoe"
-  });
+}());
 
-  var halloween = new Holiday({
-    name: "Halloween",
-    date: "October 31st",
-    character: "Ghosts",
-    food: "Candy",
-    plant: "Pumpkins"
-  });
-
-  var thanksgiving = new Holiday({
-    name: "Thanksgiving",
-    date: "November 27th",
-    character: "Tom Turkey",
-    food: "Roasted Turkey",
-    plant: "Cranberries"
-  });
-
+(function () {
 var my_server = "http://tiy-atl-fe-server.herokuapp.com/collections/joanna3";
 
-
-var HolidaysCollection = Backbone.Collection.extend ({
-  model: Holiday,
+App.Collections.HolidaysCollection = Backbone.Collection.extend ({
+  model: App.Models.Holiday,
   url: my_server
 
 });
 
+}());
 
-var all_holidays = new HolidaysCollection();
-console.log(all_holidays);
+(function () {
+App.Views.HolidaysView = Backbone.View.extend ({
 
-$("#holidayForm").on('submit', function(h){
-
-//prevent Default
-h.preventDefault();
-
-//grab info from input
-var holiday_name = $("#name").val();
-var holiday_date = $("#date").val();
-var holiday_character = $("#character").val();
-var holiday_food = $("#food").val();
-var holiday_plant = $("#plant").val();
-
-
-  var smile = new Holiday ({
-    name: holiday_name,
-    date: holiday_date,
-    character: holiday_character,
-    food: holiday_food,
-    plant: holiday_plant
-  });
-
-
-    //access our collection and add new instances to collection
-    all_holidays.add(smile);
-
-    //save our holiday
-    smile.save();
-
-    console.log(smile);
-
-    //clear my form
-    $(this)[0].reset();
-
-});
-
-var HolidaysView = Backbone.View.extend ({
-
-  tagName: 'div',
+  tagName: 'ul',
   className: 'happy',
 
+    events: {
+    "click li": "deleteHoliday"
+  },
 
   initialize: function(options) {
     console.log(options);
-    this.render(options.collection);
+    this.render();
+
+    App.all_holidays.on('sync', this.render, this);
+    App.all_holidays.on('destroy', this.render, this);
 
   },
 
-  render: function(collection){
-    console.log(collection);
+  render: function(){
     var self = this;
 
     var template= $('#happy').html();
     var rendered = _.template(template);
 
-    _.each(collection.models, function(holidaysC){
+    //clears our element
+    this.$el.empty();
+
+
+    _.each(App.all_holidays.models, function(holidaysC){
       self.$el.append(rendered(holidaysC.attributes));
     });
 
@@ -118,16 +71,91 @@ var HolidaysView = Backbone.View.extend ({
     $('#happy_holidays').html(this.el);
 
     return this;
+  },
+
+    deleteHoliday: function(e) {
+
+    e.preventDefault();
+
+    var id = $(e.target).attr('id');
+
+    var gone = App.all_holidays.get(id);
+
+    console.log(gone);
+
+    gone.destroy();
+
   }
 
 
-
 });
 
+}());
 
 
-all_holidays.fetch().done(function () {
-  var holidaysView = new HolidaysView ({
-    collection: all_holidays
+(function () {
+
+App.Views.AddHolidays = Backbone.View.extend ({
+
+  el:'#holidayAdder',
+//always delegated events
+  events: {
+    "submit #holidayForm" : "addNewHoliday"
+  },
+
+  initialize: function() {
+    this.render();
+  },
+
+  render:function(){
+    var form_html = $('#addHoliday').html();
+    this.$el.html(form_html);
+  },
+
+  addNewHoliday: function(e) {
+    e.preventDefault();
+    alert('I was submitted');
+
+  //grab info from input
+  var holiday_name = $("#name").val();
+  var holiday_date = $("#date").val();
+  var holiday_character = $("#character").val();
+  var holiday_food = $("#food").val();
+  var holiday_plant = $("#plant").val();
+
+
+  var smile = new App.Models.Holiday ({
+    name: holiday_name,
+    date: holiday_date,
+    character: holiday_character,
+    food: holiday_food,
+    plant: holiday_plant
   });
+
+
+    //access our collection and add new instances to collection
+    App.all_holidays.add(smile);
+
+    //save our holiday
+    smile.save();
+
+    console.log(smile);
+
+    //clear my form
+    $("#holidayForm")[0].reset();
+}
 });
+
+}());
+
+(function () {
+
+new App.Views.AddHolidays();
+
+App.all_holidays = new App.Collections.HolidaysCollection();
+
+App.all_holidays.fetch().done(function () {
+  new App.Views.HolidaysView ();
+});
+
+}());
