@@ -1,7 +1,11 @@
+(function () {
 
+new App.Views.AddHolidays();
 
-all_holidays.fetch().done(function () {
-  var holidaysView = new HolidaysView ({
-    collection: all_holidays
-  });
+App.all_holidays = new App.Collections.HolidaysCollection();
+
+App.all_holidays.fetch().done(function () {
+  new App.Views.HolidaysView ();
 });
+
+}());

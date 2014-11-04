@@ -25,6 +25,12 @@
 
     <div class="holiday_hero">
       <h1>Playing with Backbone.js</h1>
+        <div id= "holidayAdder"></div>
+        <div id ="happy_holidays"></div>
+    </div>
+
+
+        <script type="text/template" id="addHoliday">
           <form id="holidayForm">
             <input type="text" id="name" placeholder="Holiday Name"/>
             <input type="text" id="date" placeholder="Holiday Date"/>
@@ -33,13 +39,11 @@
             <input type="text" id="plant" placeholder="Holiday Plant"/>
             <button>Add Holiday</button>
           </form>
+        </script
 
-              <div id = "happy_holidays"></div>
-    </div>
-
-    <script type="text/template" id="happy">
-        <p>I love to celebrate <%= name %> on <%= date %>. When I see <%= character %>, I always think of <%= food %> and <%= plant %>.</p>
-    </script>
+        <script type="text/template" id="happy">
+        <li id= "<%= _id %>" >I love to celebrate <%= name %> on <%= date %>. When I see <%= character %>, I always think of <%= food %> and <%= plant %>.</li>
+        </script>
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
@@ -50,9 +54,17 @@
     <!-- endbuild -->
 
         <!-- build:js scripts/main.js -->
-        <script src="scripts/models/models.js"></script>
-        <script src="scripts/collections/collections.js"></script>
-        <script src="scripts/views/views.js"></script>
+        <script type="text/javascript">
+            window.App ={};
+            App.Models = {};
+            App.Collections = {};
+            App.Views = {};
+        </script>
+
+        <script src="scripts/Models/models.js"></script>
+        <script src="scripts/Collections/collections.js"></script>
+        <script src="scripts/Views/views.js"></script>
+        <script src="scripts/Views/add_holidays.js"></script>
         <script src="scripts/main.js"></script>
         <!-- endbuild -->
 </body>

@@ -18,9 +18,9 @@ App.Views.AddHolidays = Backbone.View.extend ({
     this.$el.html(form_html);
   },
 
-  addNewHoliday: function(h) {
-    h.preventDefault();
-    alert('I was submitted')
+  addNewHoliday: function(e) {
+    e.preventDefault();
+    alert('I was submitted');
 
   //grab info from input
   var holiday_name = $("#name").val();
@@ -48,7 +48,7 @@ App.Views.AddHolidays = Backbone.View.extend ({
     console.log(smile);
 
     //clear my form
-    $(this)[0].reset();
+    $("#holidayForm")[0].reset();
 }
 });
 
