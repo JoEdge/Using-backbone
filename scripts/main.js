@@ -42,12 +42,13 @@ App.Views.HolidaysView = Backbone.View.extend ({
     "click li": "deleteHoliday"
   },
 
-  initialize: function(options) {
-    console.log(options);
+  initialize: function() {
     this.render();
 
     App.all_holidays.on('sync', this.render, this);
     App.all_holidays.on('destroy', this.render, this);
+
+    $('#happy_holidays').html(this.el);
 
   },
 
@@ -61,14 +62,9 @@ App.Views.HolidaysView = Backbone.View.extend ({
     this.$el.empty();
 
 
-    _.each(App.all_holidays.models, function(holidaysC){
-      self.$el.append(rendered(holidaysC.attributes));
+    App.all_holidays.each(function(c){
+      self.$el.append(rendered(c.toJSON()));
     });
-
-
-    console.log(this.el);
-
-    $('#happy_holidays').html(this.el);
 
     return this;
   },
@@ -80,8 +76,6 @@ App.Views.HolidaysView = Backbone.View.extend ({
     var id = $(e.target).attr('id');
 
     var gone = App.all_holidays.get(id);
-
-    console.log(gone);
 
     gone.destroy();
 
