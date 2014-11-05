@@ -6,9 +6,7 @@ App.Models.Holiday = Backbone.Model.extend ({
     name: "",
     date: "",
     character: "",
-    symbol: "",
     food: "",
-    plant: "",
     comments: ""
   },
 
@@ -16,7 +14,7 @@ App.Models.Holiday = Backbone.Model.extend ({
 
   initialize: function () {
     var n = this.get('name');
-    console.log( n + ' has been added');
+    //console.log( n + ' has been added');
   }
 
 });
@@ -66,9 +64,7 @@ App.Views.AddHolidays = Backbone.View.extend ({
       name: $("#name").val(),
       date: $("#date").val(),
       character: $("#character").val(),
-      symbol: $("#symbol").val(),
       food: $("#food").val(),
-      plant: $("#plant").val(),
     });
 
     //access our collection and add new instances to collection
@@ -240,7 +236,7 @@ App.all_holidays = new App.Collections.HolidaysCollection();
 App.all_holidays.fetch().done(function () {
 
 
-  //Below gets moved to ROuter files
+  //Below gets moved to Router files
   //new App.Views.AddHolidays();
 
   //new App.Views.ListHolidays({ collection: App.all_holidays});
