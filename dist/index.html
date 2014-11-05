@@ -36,7 +36,9 @@
     <script type="text/template" id="listHoliday">
       <li class="card" id="<%= _id %>">
         <a href="#/edit/<%= _id %>">
-          <div class="card-header"><%= name %> on <%= date %>. When I see <%= character %> or <%= symbol %>, I always think of <%= food %> and <%= plant %>.</div>
+          <div class="card-header">
+            <p><%= name %> is on <%= date %>. When I see <%= character %> or <%= symbol %>, I always think of <%= food %> and <%= plant %>.</p>
+          </div>
           <% if(comments !== '') { %>
               <div class="card-copy"><p><%= comments %></p></div>
           <% } %>

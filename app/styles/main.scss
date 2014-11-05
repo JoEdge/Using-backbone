@@ -27,11 +27,10 @@ body {
     letter-spacing: -1px;
   }
 
-  #happy_holidays ul {
+  #happy_holidays .cheers {
     padding: 0px;
-  }
 
-  li {
+  li{
     background-color: hsla(215,55%,39%,1);
     color: white;
     padding: 10px;
@@ -43,6 +42,7 @@ body {
     &:hover {
       background-color: hsla(349,100%,43%,1);
     }
+  }
   }
 
   #name, #character, #food {
@@ -78,4 +78,24 @@ body {
     color: white;
     background-color: HSLA(280, 100%, 50%, 1);
   }
+}
+
+a {
+  color:white;
+  text-decoration: none;
+}
+
+ #happy_holidays .HolidaySingle {
+  padding: 0px;
+
+  li{
+    background-color: hsla(215,55%,39%,1);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    list-style:none;
+  }
+
 }

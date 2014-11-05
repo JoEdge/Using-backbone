@@ -145,7 +145,7 @@ var toy = {};
   App.Views.SingleHoliday = Backbone.View.extend({
 
     tagName: 'ul',
-    className: 'coffeeSingle',
+    className: 'HolidaySingle',
 
     events: {
       'click #commentButton' : 'updateHoliday',
@@ -175,8 +175,6 @@ var toy = {};
     updateHoliday: function (e) {
       e.preventDefault();
 
-      this.$el.empty();
-
       // Update our Model Instance
       this.options.holiday.set({
         comments: $('#holiday_comments').val()
@@ -184,7 +182,6 @@ var toy = {};
 
       // Save Instance
       this.options.holiday.save();
-
 
       // Go back to our home page
       App.router.navigate('', {trigger: true});
