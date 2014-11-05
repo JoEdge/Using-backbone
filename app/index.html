@@ -32,10 +32,8 @@
         <form id="holidayForm">
           <input type="text" id="name" placeholder="Holiday Name"/>
           <input type="text" id="date" placeholder="Holiday Date"/>
-          <input type="text" id="character" placeholder="Holiday Character"/>
-          <input type="text" id="symbol" placeholder="Holiday Symbol"/>
-          <input type="text" id="food" placeholder="Holiday Food"/>
-          <input type="text" id="plant" placeholder="Holiday Plant"/>
+          <input type="text" id="character" placeholder="Holiday Character/Symbol"/>
+          <input type="text" id="food" placeholder="Holiday Food/Plant"/>
             <button id="addButton">Add Holiday Information</button>
         </form>
         <hr />
@@ -45,10 +43,13 @@
       <li class="card" id="<%= _id %>">
         <a href="#/edit/<%= _id %>">
           <div class="card-header">
-            <p><%= name %> is on <%= date %>. When I see <%= character %> or <%= symbol %>, I always think of <%= food %> and <%= plant %>.</p>
+            <h5>Holiday Info</h5>
+            <p><%= name %> is on <%= date %>. When I see <%= character %>, I always think of <%= food %>.</p>
           </div>
           <% if(comments !== '') { %>
-              <div class="card-copy"><p><%= comments %></p></div>
+              <div class="card-copy">
+                <h5>Holiday Memories</h5>
+                  <p id="comments"><%= comments %></p></div>
           <% } %>
         </a>
       </li>

@@ -30,9 +30,7 @@ App.Views.AddHolidays = Backbone.View.extend ({
       name: $("#name").val(),
       date: $("#date").val(),
       character: $("#character").val(),
-      symbol: $("#symbol").val(),
       food: $("#food").val(),
-      plant: $("#plant").val(),
     });
 
     //access our collection and add new instances to collection

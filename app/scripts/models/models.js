@@ -6,9 +6,7 @@ App.Models.Holiday = Backbone.Model.extend ({
     name: "",
     date: "",
     character: "",
-    symbol: "",
     food: "",
-    plant: "",
     comments: ""
   },
 
@@ -16,7 +14,7 @@ App.Models.Holiday = Backbone.Model.extend ({
 
   initialize: function () {
     var n = this.get('name');
-    console.log( n + ' has been added');
+    //console.log( n + ' has been added');
   }
 
 });

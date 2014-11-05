@@ -45,13 +45,13 @@ body {
   }
   }
 
-  #name, #character, #food {
-    padding-right:40px;
+  #name, #character, {
+    width: 230px;
   }
 
-  #date, #symbol, #plant {
+  #date, #food {
     float: right;
-    padding-right:40px;
+    width: 230px;
   }
 
   #addButton {
@@ -99,3 +99,24 @@ a {
   }
 
 }
+
+  h5 {
+    border-top: 1px solid black;
+    padding-left: 5px;
+    border-bottom: 1px solid black;
+    margin-bottom: 0px;
+    color: hsla(215,55%,39%,1);
+    background-color: white;
+  }
+
+  .card-header p {
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 0px;
+  }
+
+  .card-copy p {
+    padding-right: 5px;
+    padding-left: 5px;
+    margin-top: 0px;
+  }
