@@ -8,7 +8,8 @@ App.Models.Holiday = Backbone.Model.extend ({
     character: "",
     symbol: "",
     food: "",
-    plant: ""
+    plant: "",
+    comments: ""
   },
 
   idAttribute: "_id",
@@ -33,101 +34,42 @@ App.Collections.HolidaysCollection = Backbone.Collection.extend ({
 
 }());
 
-(function () {
-App.Views.HolidaysView = Backbone.View.extend ({
-
-  tagName: 'ul',
-  className: 'happy',
-
-    events: {
-    "click li": "deleteHoliday"
-  },
-
-  initialize: function() {
-    this.render();
-
-    App.all_holidays.on('sync', this.render, this);
-    App.all_holidays.on('destroy', this.render, this);
-
-    $('#happy_holidays').html(this.el);
-
-  },
-
-  render: function(){
-    var self = this;
-
-    var template= $('#happy').html();
-    var rendered = _.template(template);
-
-    //clears our element
-    this.$el.empty();
-
-
-    App.all_holidays.each(function(c){
-      self.$el.append(rendered(c.toJSON()));
-    });
-
-    return this;
-  },
-
-    deleteHoliday: function(e) {
-
-    e.preventDefault();
-
-    var id = $(e.target).attr('id');
-
-    var gone = App.all_holidays.get(id);
-
-    gone.destroy();
-
-  }
-
-
-});
-
-}());
-
 
 (function () {
 
 App.Views.AddHolidays = Backbone.View.extend ({
 
-  el:'#holidayAdder',
+//  el:'#holidayAdder',
 //always delegated events
+
   events: {
     "submit #holidayForm" : "addNewHoliday"
   },
 
   initialize: function() {
     this.render();
+
+    $('#holidayAdder').html(this.$el);
   },
 
   render:function(){
-    var form_html = $('#addHoliday').html();
-    this.$el.html(form_html);
+  //  var form_html = $('#addHoliday').html();
+  //  this.$el.html(form_html);
+    this.$el.html($('#addHoliday').html());
   },
 
   addNewHoliday: function(e) {
     e.preventDefault();
 
-  //grab info from input
-  var holiday_name = $("#name").val();
-  var holiday_date = $("#date").val();
-  var holiday_character = $("#character").val();
-  var holiday_symbol = $("#symbol").val();
-  var holiday_food = $("#food").val();
-  var holiday_plant = $("#plant").val();
-
-
-  var smile = new App.Models.Holiday ({
-    name: holiday_name,
-    date: holiday_date,
-    character: holiday_character,
-    symbol: holiday_symbol,
-    food: holiday_food,
-    plant: holiday_plant
-  });
-
+    //grab info from input
+    var smile = new App.Models.Holiday({
+      name: $("#name").val(),
+      date: $("#date").val(),
+      character: $("#character").val(),
+      symbol: $("#symbol").val(),
+      food: $("#food").val(),
+      plant: $("#plant").val(),
+    });
 
     //access our collection and add new instances to collection
     App.all_holidays.add(smile);
@@ -138,18 +80,109 @@ App.Views.AddHolidays = Backbone.View.extend ({
     //clear my form
     $("#holidayForm")[0].reset();
 }
+
 });
 
 }());
 
 (function () {
+App.Views.ListHolidays = Backbone.View.extend ({
 
-new App.Views.AddHolidays();
+  tagName: 'ul',
+  className: 'cheers',
+
+//    events: {
+//    "click li": "deleteHoliday"
+//  },
+
+    events: {},
+
+    template: _.template($('#listHoliday').html()),
+
+  initialize: function() {
+    this.render();
+
+    this.collection.off();
+    this.collection.on('sync', this.render, this);
+
+    $('#happy_holidays').html(this.$el);
+
+  },
+
+  render: function(){
+    var self = this;
+
+    //clears our element
+    this.$el.empty();
+
+    this.collection.each(function(c){
+      self.$el.append(self.template(c.toJSON()));
+    });
+
+    return this;
+  },
+
+  /*  deleteHoliday: function(e) {
+
+    e.preventDefault();
+
+    var id = $(e.target).attr('id');
+
+    var gone = App.all_holidays.get(id);
+
+    gone.destroy();
+
+  } */
+
+});
+
+}());
+
+
+(function () {
+
+  App.Routers.AppRouter = Backbone.Router.extend({
+
+    initialize: function () {
+      // Light the Fire
+      Backbone.history.start();
+    },
+
+    routes: {
+      '' : 'home',
+      'edit/:id' : 'editHoliday'
+    },
+
+    home: function () {
+      new App.Views.AddHolidays();
+      new App.Views.ListHolidays({ collection: App.all_holidays});
+    },
+
+    editHoliday: function (id) {
+
+      var h = App.all_holidays.get(id);
+
+      new App.Views.SingleHoliday({ holiday: h });
+    }
+
+  });
+
+}());
+
+(function () {
 
 App.all_holidays = new App.Collections.HolidaysCollection();
 
 App.all_holidays.fetch().done(function () {
-  new App.Views.HolidaysView ();
+
+
+  //Below gets moved to ROuter files
+  //new App.Views.AddHolidays();
+
+  //new App.Views.ListHolidays({ collection: App.all_holidays});
+
+  App.router = new App.Routers.AppRouter();
+
 });
 
 }());

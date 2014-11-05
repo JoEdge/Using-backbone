@@ -8,7 +8,8 @@ App.Models.Holiday = Backbone.Model.extend ({
     character: "",
     symbol: "",
     food: "",
-    plant: ""
+    plant: "",
+    comments: ""
   },
 
   idAttribute: "_id",

@@ -1,11 +1,17 @@
 (function () {
 
-new App.Views.AddHolidays();
-
 App.all_holidays = new App.Collections.HolidaysCollection();
 
 App.all_holidays.fetch().done(function () {
-  new App.Views.HolidaysView ();
+
+
+  //Below gets moved to ROuter files
+  //new App.Views.AddHolidays();
+
+  //new App.Views.ListHolidays({ collection: App.all_holidays});
+
+  App.router = new App.Routers.AppRouter();
+
 });
 
 }());
