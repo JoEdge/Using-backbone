@@ -201,7 +201,7 @@ var toy = {};
 
 (function () {
 
-  App.Routers.AppRouter = Backbone.Router.extend({
+  App.Routers.HolidayRouter = Backbone.Router.extend({
 
     initialize: function () {
       // Light the Fire
@@ -241,7 +241,7 @@ App.all_holidays.fetch().done(function () {
 
   //new App.Views.ListHolidays({ collection: App.all_holidays});
 
-  App.router = new App.Routers.AppRouter();
+  App.router = new App.Routers.HolidayRouter();
 
 });
 
