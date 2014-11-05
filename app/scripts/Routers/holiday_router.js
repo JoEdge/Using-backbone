@@ -1,6 +1,6 @@
 (function () {
 
-  App.Routers.AppRouter = Backbone.Router.extend({
+  App.Routers.HolidayRouter = Backbone.Router.extend({
 
     initialize: function () {
       // Light the Fire

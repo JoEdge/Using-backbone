@@ -10,7 +10,7 @@ App.all_holidays.fetch().done(function () {
 
   //new App.Views.ListHolidays({ collection: App.all_holidays});
 
-  App.router = new App.Routers.AppRouter();
+  App.router = new App.Routers.HolidayRouter();
 
 });
 
