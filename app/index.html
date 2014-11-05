@@ -48,9 +48,6 @@
           <% if(comments !== '') { %>
               <div class="card-copy"><p><%= comments %></p></div>
           <% } %>
-          <% if(rating !== '') { %>
-              <div class="card-stats">Rating:</div>
-          <% } %>
         </a>
       </li>
     </script>
@@ -59,17 +56,12 @@
       <li class="card" id="<%= _id %>">
         <form id="holidayForm_update">
           <div class="card-header">
-            <input type="text" id="name" placeholder="Holiday Name"/>
-            <input type="text" id="date" placeholder="Holiday Date"/>
-            <input type="text" id="character" placeholder="Holiday Character"/>
-            <input type="text" id="symbol" placeholder="Holiday Symbol"/>
-            <input type="text" id="food" placeholder="Holiday Food"/>
-            <input type="text" id="plant" placeholder="Holiday Plant"/>
+            <p><%= name %></p>
           </div>
           <div class="card-copy">
-              <textarea id="holiday_comments"><%= comments %></textarea>
+              <textarea id="holiday_comments" placeholder="Share Holiday Memories"><%= comments %></textarea>
           </div>
-            <button id="commentButton">Holiday Memories</button>
+            <button id="commentButton">Add Holiday Memories</button>
             <button id="delete">Delete</button>
         </form>
       </li>

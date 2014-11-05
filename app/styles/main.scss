@@ -17,7 +17,6 @@ body {
   font-size: 18px;
   font-weight: 200;
   line-height: 30px;
-  opacity: .8;
   background-color: #eee;
   border-radius: 6px;
   padding: 60px;
@@ -60,6 +59,22 @@ body {
     border-radius: 10px;
     margin-top:10px;
     margin-left:29%;
+    color: white;
+    background-color: HSLA(280, 100%, 50%, 1);
+  }
+
+  #holiday_comments {
+    width: 460px;
+    color:black;
+  }
+
+  #commentButton {
+    color: white;
+    background-color: HSLA(280, 100%, 50%, 1);
+  }
+
+  #delete {
+    float: right;
     color: white;
     background-color: HSLA(280, 100%, 50%, 1);
   }
