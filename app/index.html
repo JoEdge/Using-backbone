@@ -32,7 +32,7 @@
     <script type="text/template" id="addHoliday">
         <form id="holidayForm">
           <input type="text" id="event_shop" placeholder="Event"/>
-          <input type="text" id="date" placeholder="Date"/>
+          <input type="date" id="date" placeholder="Date"/>
           <input type="text" id="name" placeholder="Giftee Name"/>
           <input type="text" id="age" placeholder="Age"/>
           <input type="text" id="street_address" placeholder="Street Address"/>
@@ -47,7 +47,8 @@
         <a href="#/edit/<%= _id %>">
           <div class="card-header">
             <h5>Gift Info for <%= name %></h5>
-            <p><%= event_shop %> is on <%= date %>. Shopping for <%= name %>.</p>
+            <p><%= event_shop %> is on <%=
+moment(date).format("MMM Do") %>.</p>
           </div>
           <% if(comments !== '') { %>
               <div class="card-copy">
@@ -79,6 +80,7 @@
     <script src="../bower_components/underscore/underscore.js"></script>
     <script src="../bower_components/backbone/backbone.js"></script>
     <script src="../bower_components/pickadate/lib/picker.js"></script>
+    <script src="../bower_components/moment/moment.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

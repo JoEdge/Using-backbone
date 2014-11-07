@@ -1,8 +1,8 @@
 (function () {
 
-$(document).ready(function() {
-    $('#date').pickadate()
-});
+//$(document).ready(function() {
+//  $('#date').pickadate()
+//});
 
 App.all_holidays = new App.Collections.HolidaysCollection();
 
