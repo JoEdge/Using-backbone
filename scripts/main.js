@@ -42,9 +42,6 @@ App.Collections.HolidaysCollection = Backbone.Collection.extend ({
 
 App.Views.AddHolidays = Backbone.View.extend ({
 
-//  el:'#holidayAdder',
-//always delegated events
-
   events: {
     "submit #holidayForm" : "addNewHoliday"
   },
@@ -228,10 +225,6 @@ var toy = {};
 }());
 
 (function () {
-
-//$(document).ready(function() {
-//  $('#date').pickadate()
-//});
 
 App.all_holidays = new App.Collections.HolidaysCollection();
 
