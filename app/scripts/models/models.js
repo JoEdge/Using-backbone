@@ -3,10 +3,12 @@
 App.Models.Holiday = Backbone.Model.extend ({
 
     defaults: {
-    name: "",
+    event_shop: "",
     date: "",
-    character: "",
-    food: "",
+    name: "",
+    age: "",
+    street_address: "",
+    city_address:"",
     comments: ""
   },
 

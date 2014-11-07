@@ -27,10 +27,12 @@ App.Views.AddHolidays = Backbone.View.extend ({
 
     //grab info from input
     var smile = new App.Models.Holiday({
-      name: $("#name").val(),
+      event_shop: $("#event_shop").val(),
       date: $("#date").val(),
-      character: $("#character").val(),
-      food: $("#food").val(),
+      name: $("#name").val(),
+      age: $("#age").val(),
+      street_address: $("#strees_address").val(),
+      city_address: $("#city_address").val(),
     });
 
     //access our collection and add new instances to collection

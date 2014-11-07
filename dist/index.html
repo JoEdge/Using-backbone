@@ -15,18 +15,20 @@
   </head>
   <body>
     <div class="holiday_hero">
-      <h1>All About the Holidays</h1>
+      <h1>Gift List</h1>
         <div id= "holidayAdder"></div>
         <div id="happy_holidays"></div>
      </div>
 
     <script type="text/template" id="addHoliday">
         <form id="holidayForm">
-          <input type="text" id="name" placeholder="Holiday Name"/>
-          <input type="text" id="date" placeholder="Holiday Date"/>
-          <input type="text" id="character" placeholder="Holiday Character/Symbol"/>
-          <input type="text" id="food" placeholder="Holiday Food/Plant"/>
-            <button id="addButton">Add Holiday Information</button>
+          <input type="text" id="event_shop" placeholder="Event"/>
+          <input type="text" id="date" placeholder="Date"/>
+          <input type="text" id="name" placeholder="Giftee Name"/>
+          <input type="text" id="age" placeholder="Age"/>
+          <input type="text" id="street_address" placeholder="Street Address"/>
+          <input type="text" id="city_address" placeholder="City, State Zipcode"/>
+            <button id="addButton">Add Information</button>
         </form>
         <hr />
     </script>
@@ -35,12 +37,12 @@
       <li class="card" id="<%= _id %>">
         <a href="#/edit/<%= _id %>">
           <div class="card-header">
-            <h5>Holiday Info on <%= name %></h5>
-            <p><%= name %> is on <%= date %>. When I see <%= character %>, I always think of <%= food %>.</p>
+            <h5>Gift Info for <%= name %></h5>
+            <p><%= event_shop %> is on <%= date %>. Shopping for <%= name %>.</p>
           </div>
           <% if(comments !== '') { %>
               <div class="card-copy">
-                <h5>Holiday Memories</h5>
+                <h5>Gift Ideas</h5>
                   <p id="comments"><%= comments %></p></div>
           <% } %>
         </a>
@@ -54,10 +56,10 @@
             <p><%= name %></p>
           </div>
           <div class="card-copy">
-              <textarea id="holiday_comments" placeholder="Share Holiday Memories"><%= comments %></textarea>
+              <textarea id="holiday_comments" placeholder="Gift Ideas"><%= comments %></textarea>
           </div>
-            <button id="commentButton">Add Holiday Memories</button>
-            <button id="delete">Delete</button>
+            <button id="commentButton">Add Gift Ideas</button>
+            <button id="delete">Delete Info</button>
         </form>
       </li>
     </script>
