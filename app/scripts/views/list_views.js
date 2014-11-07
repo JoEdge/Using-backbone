@@ -35,18 +35,6 @@ App.Views.ListHolidays = Backbone.View.extend ({
     return this;
   },
 
-  /*  deleteHoliday: function(e) {
-
-    e.preventDefault();
-
-    var id = $(e.target).attr('id');
-
-    var gone = App.all_holidays.get(id);
-
-    gone.destroy();
-
-  } */
-
 });
 
 }());

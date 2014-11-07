@@ -64,10 +64,13 @@ App.Views.AddHolidays = Backbone.View.extend ({
   addNewHoliday: function(e) {
     e.preventDefault();
 
+    //set var to convert date to UTC code
+    //var utc_date = Date.parse($("#date").val());
+
     //grab info from input
     var smile = new App.Models.Holiday({
       event_shop: $("#event_shop").val(),
-      date: $("#date").val(),
+      date: $("#date").val(), //utc_date
       name: $("#name").val(),
       age: $("#age").val(),
       street_address: $("#strees_address").val(),
@@ -124,18 +127,6 @@ App.Views.ListHolidays = Backbone.View.extend ({
 
     return this;
   },
-
-  /*  deleteHoliday: function(e) {
-
-    e.preventDefault();
-
-    var id = $(e.target).attr('id');
-
-    var gone = App.all_holidays.get(id);
-
-    gone.destroy();
-
-  } */
 
 });
 
@@ -238,10 +229,13 @@ var toy = {};
 
 (function () {
 
+$(document).ready(function() {
+    $('#date').pickadate()
+});
+
 App.all_holidays = new App.Collections.HolidaysCollection();
 
 App.all_holidays.fetch().done(function () {
-
 
   //Below gets moved to Router files
   //new App.Views.AddHolidays();
