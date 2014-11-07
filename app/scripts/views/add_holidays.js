@@ -3,9 +3,6 @@
 
 App.Views.AddHolidays = Backbone.View.extend ({
 
-//  el:'#holidayAdder',
-//always delegated events
-
   events: {
     "submit #holidayForm" : "addNewHoliday"
   },

@@ -1,9 +1,5 @@
 (function () {
 
-//$(document).ready(function() {
-//  $('#date').pickadate()
-//});
-
 App.all_holidays = new App.Collections.HolidaysCollection();
 
 App.all_holidays.fetch().done(function () {
