@@ -137,7 +137,7 @@ App.Views.ListHolidays = Backbone.View.extend ({
     className: 'HolidaySingle',
 
     events: {
-      'click #commentButton' : 'updateHoliday',
+      'click #commentButton' : 'editHoliday',
       'click #delete' : 'deleteHoliday'
     },
 
@@ -146,8 +146,6 @@ App.Views.ListHolidays = Backbone.View.extend ({
     initialize: function (options) {
       this.options = options;
       this.render();
-
-    //  $('#holidayAdder').empty();
 
       // Get our Element On Our Page
       $('#happy_holidays').html(this.$el);
@@ -161,7 +159,7 @@ App.Views.ListHolidays = Backbone.View.extend ({
 
     },
 
-    updateHoliday: function (e) {
+    editHoliday: function (e) {
       e.preventDefault();
 
       // Update our Model Instance
@@ -211,8 +209,6 @@ App.Views.ListHolidays = Backbone.View.extend ({
       '' : 'home',
       'edit/:id' : 'editHoliday',
       'sort/:sortby' : 'home'
-
-
     },
 
     home: function (sortby) {
