@@ -37,9 +37,9 @@
           <input type="text" id="age" placeholder="Age"/>
           <input type="text" id="street_address" placeholder="Street Address"/>
           <input type="text" id="city_address" placeholder="City, State Zipcode"/>
+          <textarea id="comments" placeholder="Gift Ideas"></textarea>
             <button id="addButton">Add Information</button>
         </form>
-        <hr />
     </script>
 
     <script type="text/template" id="listHoliday">
@@ -50,6 +50,12 @@
             <p><%= event_shop %> is on <%=
 moment(date).format("MMM Do") %>.</p>
           </div>
+          <% if(street_address !== '' && city_address !== '') { %>
+              <div class="card-copy">
+                <h5>Mailing Address</h5>
+                  <p id="address"><%= street_address %></br>
+                   <%= city_address %></p></div>
+          <% } %>
           <% if(comments !== '') { %>
               <div class="card-copy">
                 <h5>Gift Ideas</h5>
@@ -66,9 +72,15 @@ moment(date).format("MMM Do") %>.</p>
             <p><%= name %></p>
           </div>
           <div class="card-copy">
-              <textarea id="holiday_comments" placeholder="Gift Ideas"><%= comments %></textarea>
+              <input type="text" value="<%= event_shop %>" id="update_event" placeholder="Event"/>
+              <input type="date" value="<%= date %>" id="update_date" placeholder="Date"/>
+              <input type="text" value="<%= name %>" id="update_name" placeholder="Giftee Name"/>
+              <input type="text" value="<%= age %>" id="update_age" placeholder="Age"/>
+              <input type="text" value="<%= street_address %>" id="update_street" placeholder="Street Address"/>
+              <input type="text" value="<%= city_address %>" id="update_city" placeholder="City, State Zipcode"/>
+              <textarea id="update_comments" placeholder="Gift Ideas"> <%= comments %></textarea>
           </div>
-            <button id="commentButton">Add Gift Ideas</button>
+            <button id="commentButton">Edit Gift Ideas</button>
             <button id="delete">Delete Info</button>
         </form>
       </li>

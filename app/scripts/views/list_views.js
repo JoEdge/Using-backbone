@@ -4,15 +4,14 @@ App.Views.ListHolidays = Backbone.View.extend ({
   tagName: 'ul',
   className: 'cheers',
 
-//    events: {
-//    "click li": "deleteHoliday"
-//  },
-
     events: {},
 
     template: _.template($('#listHoliday').html()),
 
-  initialize: function() {
+  initialize: function(options) {
+
+    this.options = options;
+
     this.render();
 
     this.collection.off();
@@ -23,13 +22,14 @@ App.Views.ListHolidays = Backbone.View.extend ({
   },
 
   render: function(){
+
     var self = this;
 
     //clears our element
     this.$el.empty();
 
-    this.collection.each(function(c){
-      self.$el.append(self.template(c.toJSON()));
+    this.collection.each(function(instances){
+      self.$el.append(self.template(instances.toJSON()));
     });
 
     return this;

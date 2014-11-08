@@ -60,6 +60,11 @@ body {
     width: 480px;
   }
 
+  #comments {
+    width: 460px;
+    color:black;
+  }
+
   #addButton {
     text-decoration:none;
     border-radius: 10px;
@@ -67,11 +72,6 @@ body {
     margin-left:29%;
     color: white;
     background-color: HSLA(280, 100%, 50%, 1);
-  }
-
-  #holiday_comments {
-    width: 460px;
-    color:black;
   }
 
   #commentButton {
@@ -125,4 +125,24 @@ a {
     padding-right: 5px;
     padding-left: 5px;
     margin-top: 0px;
-  }
+}
+    #update_event, #update_name, {
+      width: 230px;
+      color: black;
+    }
+
+    #update_date, #update_age {
+      float: right;
+      width: 230px;
+      color: black;
+    }
+
+    #update_street, #update_city {
+      width: 480px;
+      color: black;
+    }
+
+    #update_comments {
+      width: 460px;
+      color: black;
+    }

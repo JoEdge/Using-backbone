@@ -4,35 +4,33 @@
 App.Views.AddHolidays = Backbone.View.extend ({
 
   events: {
-    "submit #holidayForm" : "addNewHoliday"
+    'click #addButton' : 'addNewHoliday',
   },
 
   initialize: function() {
     this.render();
 
+    $('#holidayAdder').empty();
+
     $('#holidayAdder').html(this.$el);
   },
 
   render:function(){
-  //  var form_html = $('#addHoliday').html();
-  //  this.$el.html(form_html);
     this.$el.html($('#addHoliday').html());
   },
 
   addNewHoliday: function(e) {
     e.preventDefault();
 
-    //set var to convert date to UTC code
-    //var utc_date = Date.parse($("#date").val());
-
-    //grab info from input
+    //collect info from input
     var smile = new App.Models.Holiday({
       event_shop: $("#event_shop").val(),
-      date: $("#date").val(), //utc_date
+      date: $("#date").val(),
       name: $("#name").val(),
       age: $("#age").val(),
-      street_address: $("#strees_address").val(),
+      street_address: $("#street_address").val(),
       city_address: $("#city_address").val(),
+      comments: $("comments").val(),
     });
 
     //access our collection and add new instances to collection
@@ -43,7 +41,7 @@ App.Views.AddHolidays = Backbone.View.extend ({
 
     //clear my form
     $("#holidayForm")[0].reset();
-}
+  }
 
 });
 

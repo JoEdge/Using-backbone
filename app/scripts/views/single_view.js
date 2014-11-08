@@ -1,4 +1,4 @@
-var toy = {};
+
 
 (function () {
 
@@ -18,7 +18,7 @@ var toy = {};
       this.options = options;
       this.render();
 
-      $('#holidayAdder').empty();
+    //  $('#holidayAdder').empty();
 
       // Get our Element On Our Page
       $('#happy_holidays').html(this.$el);
@@ -37,13 +37,19 @@ var toy = {};
 
       // Update our Model Instance
       this.options.holiday.set({
-        comments: $('#holiday_comments').val()
+        event_shop: $("#update_event").val(),
+        date: $("#update_date").val(),
+        name: $("#update_name").val(),
+        age: $("#update_age").val(),
+        street_address: $("#update_street").val(),
+        city_address: $("#update_city").val(),
+        comments: $("#update_comments").val()
       });
 
       // Save Instance
       this.options.holiday.save();
 
-      // Go back to our home page
+      // Return to home page
       App.router.navigate('', {trigger: true});
 
     },
@@ -51,10 +57,10 @@ var toy = {};
     deleteHoliday: function (e) {
       e.preventDefault();
 
-      // Remove Coffee
+      // Remove Holiday
       this.options.holiday.destroy();
 
-      // Go home ET
+      // Return to home page
       App.router.navigate('', {trigger: true});
 
     }
