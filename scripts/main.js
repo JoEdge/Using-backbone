@@ -43,35 +43,33 @@ App.Collections.HolidaysCollection = Backbone.Collection.extend ({
 App.Views.AddHolidays = Backbone.View.extend ({
 
   events: {
-    "submit #holidayForm" : "addNewHoliday"
+    'click #addButton' : 'addNewHoliday',
   },
 
   initialize: function() {
     this.render();
 
+    $('#holidayAdder').empty();
+
     $('#holidayAdder').html(this.$el);
   },
 
   render:function(){
-  //  var form_html = $('#addHoliday').html();
-  //  this.$el.html(form_html);
     this.$el.html($('#addHoliday').html());
   },
 
   addNewHoliday: function(e) {
     e.preventDefault();
 
-    //set var to convert date to UTC code
-    //var utc_date = Date.parse($("#date").val());
-
-    //grab info from input
+    //collect info from input
     var smile = new App.Models.Holiday({
       event_shop: $("#event_shop").val(),
-      date: $("#date").val(), //utc_date
+      date: $("#date").val(),
       name: $("#name").val(),
       age: $("#age").val(),
-      street_address: $("#strees_address").val(),
+      street_address: $("#street_address").val(),
       city_address: $("#city_address").val(),
+      comments: $("comments").val(),
     });
 
     //access our collection and add new instances to collection
@@ -82,7 +80,7 @@ App.Views.AddHolidays = Backbone.View.extend ({
 
     //clear my form
     $("#holidayForm")[0].reset();
-}
+  }
 
 });
 
@@ -94,15 +92,14 @@ App.Views.ListHolidays = Backbone.View.extend ({
   tagName: 'ul',
   className: 'cheers',
 
-//    events: {
-//    "click li": "deleteHoliday"
-//  },
-
     events: {},
 
     template: _.template($('#listHoliday').html()),
 
-  initialize: function() {
+  initialize: function(options) {
+
+    this.options = options;
+
     this.render();
 
     this.collection.off();
@@ -113,13 +110,14 @@ App.Views.ListHolidays = Backbone.View.extend ({
   },
 
   render: function(){
+
     var self = this;
 
     //clears our element
     this.$el.empty();
 
-    this.collection.each(function(c){
-      self.$el.append(self.template(c.toJSON()));
+    this.collection.each(function(instances){
+      self.$el.append(self.template(instances.toJSON()));
     });
 
     return this;
@@ -129,7 +127,7 @@ App.Views.ListHolidays = Backbone.View.extend ({
 
 }());
 
-var toy = {};
+
 
 (function () {
 
@@ -149,7 +147,7 @@ var toy = {};
       this.options = options;
       this.render();
 
-      $('#holidayAdder').empty();
+    //  $('#holidayAdder').empty();
 
       // Get our Element On Our Page
       $('#happy_holidays').html(this.$el);
@@ -168,13 +166,19 @@ var toy = {};
 
       // Update our Model Instance
       this.options.holiday.set({
-        comments: $('#holiday_comments').val()
+        event_shop: $("#update_event").val(),
+        date: $("#update_date").val(),
+        name: $("#update_name").val(),
+        age: $("#update_age").val(),
+        street_address: $("#update_street").val(),
+        city_address: $("#update_city").val(),
+        comments: $("#update_comments").val()
       });
 
       // Save Instance
       this.options.holiday.save();
 
-      // Go back to our home page
+      // Return to home page
       App.router.navigate('', {trigger: true});
 
     },
@@ -182,10 +186,10 @@ var toy = {};
     deleteHoliday: function (e) {
       e.preventDefault();
 
-      // Remove Coffee
+      // Remove Holiday
       this.options.holiday.destroy();
 
-      // Go home ET
+      // Return to home page
       App.router.navigate('', {trigger: true});
 
     }
@@ -205,18 +209,20 @@ var toy = {};
 
     routes: {
       '' : 'home',
-      'edit/:id' : 'editHoliday'
+      'edit/:id' : 'editHoliday',
+      'sort/:sortby' : 'home'
+
+
     },
 
-    home: function () {
+    home: function (sortby) {
       new App.Views.AddHolidays();
-      new App.Views.ListHolidays({ collection: App.all_holidays});
+      new App.Views.ListHolidays({ collection: App.all_holidays, sort: sortby});
     },
+
 
     editHoliday: function (id) {
-
       var h = App.all_holidays.get(id);
-
       new App.Views.SingleHoliday({ holiday: h });
     }
 
