@@ -4,30 +4,66 @@
 
 // Custom Styles
 body {
-  background: #fafafa;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #333;
   background-image: url('../images/bow.jpg');
 }
 
+.holiday_page {
+  @include outer-container;
 
-.holiday_hero {
-  margin-top: 50px;
-  margin-left: 50px;
+.header {
+  @include span-columns(12);
+
+  h1 {
+  color: white;
+  text-align: center;
+  font-size: 60px;
+  }
+}
+
+.addInfo {
+  @include span-columns(4);
+  float: left;
   margin-bottom:100px;
-  width: 600px;
   font-size: 18px;
   font-weight: 200;
   line-height: 30px;
   background-color: #eee;
   border-radius: 6px;
-  padding: 60px;
+  padding: 40px;
 
-  h1 {
-    font-size: 47px;
+  h2 {
+    font-size: 30px;
     line-height: 1;
     letter-spacing: -1px;
   }
+
+    #street_address, #city_address, #comments {
+      width: 100%;
+      margin: 3px auto;
+      overflow: auto;
+      color: black;
+    }
+
+    #event_shop, #date, #name, #age {
+      width: 100%;
+      margin: 3px auto;
+      color: black;
+    }
+
+      #addButton {
+        text-decoration:none;
+        border-radius: 10px;
+        margin-top:10px;
+        margin-left:47%;
+        color: white;
+        background-color: HSLA(280, 100%, 50%, 1);
+      }
+}
+
+.main {
+  float: right;
+  width: 600px;
 
   #happy_holidays .cheers {
     padding: 0px;
@@ -46,45 +82,19 @@ body {
     }
   }
   }
-
-  #event_shop, #name, {
-    width: 230px;
-  }
-
-  #date, #age {
-    float: right;
-    width: 230px;
-  }
-
-  #street_address, #city_address {
-    width: 480px;
-  }
-
-  #comments {
-    width: 460px;
-    color:black;
-  }
-
-  #addButton {
-    text-decoration:none;
-    border-radius: 10px;
-    margin-top:10px;
-    margin-left:29%;
-    color: white;
-    background-color: HSLA(280, 100%, 50%, 1);
-  }
-
-  #commentButton {
-    color: white;
-    background-color: HSLA(280, 100%, 50%, 1);
-  }
-
-  #delete {
-    float: right;
-    color: white;
-    background-color: HSLA(280, 100%, 50%, 1);
-  }
 }
+
+#commentButton {
+  color: white;
+  background-color: HSLA(280, 100%, 50%, 1);
+}
+
+#delete {
+  float: right;
+  color: white;
+  background-color: HSLA(280, 100%, 50%, 1);
+}
+
 
 a {
   color:white;
@@ -103,7 +113,6 @@ a {
     cursor: pointer;
     list-style:none;
   }
-
 }
 
   h5 {
@@ -121,28 +130,10 @@ a {
     margin-top: 0px;
   }
 
-  .card-copy p {
+  .card-copy1 p, .card-copy2 p {
     padding-right: 5px;
     padding-left: 5px;
     margin-top: 0px;
+    color: white;
+  }
 }
-    #update_event, #update_name, {
-      width: 230px;
-      color: black;
-    }
-
-    #update_date, #update_age {
-      float: right;
-      width: 230px;
-      color: black;
-    }
-
-    #update_street, #update_city {
-      width: 480px;
-      color: black;
-    }
-
-    #update_comments {
-      width: 460px;
-      color: black;
-    }

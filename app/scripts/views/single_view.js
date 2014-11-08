@@ -43,7 +43,7 @@
         age: $("#update_age").val(),
         street_address: $("#update_street").val(),
         city_address: $("#update_city").val(),
-        comments: $("#update_comments").val()
+        comments: $("#update_comments").val(),
       });
 
       // Save Instance

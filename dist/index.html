@@ -15,11 +15,19 @@
 
   </head>
   <body>
-    <div class="holiday_hero">
-      <h1>Gift List</h1>
-        <div id= "holidayAdder"></div>
-        <div id="happy_holidays"></div>
-     </div>
+    <div class="holiday_page">
+      <div class="header">
+        <h1>Guide to Gifts</h1>
+      </div>
+        <div class= "addInfo">
+          <h2>Gift Information</h1>
+          <div id= "holidayAdder"></div>
+        </div>
+
+        <div class= "main">
+          <div id="happy_holidays"></div>
+        </div>
+    </div>
 
     <script type="text/template" id="addHoliday">
         <form id="holidayForm">
@@ -43,15 +51,15 @@
 moment(date).format("MMM Do") %>.</p>
           </div>
           <% if(street_address !== '' && city_address !== '') { %>
-              <div class="card-copy">
+              <div class="card-copy1">
                 <h5>Mailing Address</h5>
                   <p id="address"><%= street_address %></br>
                    <%= city_address %></p></div>
           <% } %>
           <% if(comments !== '') { %>
-              <div class="card-copy">
+              <div class="card-copy2">
                 <h5>Gift Ideas</h5>
-                  <p id="comments"><%= comments %></p></div>
+                  <p id="comment"><%= comments %></p></div>
           <% } %>
         </a>
       </li>

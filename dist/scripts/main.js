@@ -9,7 +9,7 @@ App.Models.Holiday = Backbone.Model.extend ({
     age: "",
     street_address: "",
     city_address:"",
-    comments: ""
+    comments: "",
   },
 
   idAttribute: "_id",
@@ -69,7 +69,7 @@ App.Views.AddHolidays = Backbone.View.extend ({
       age: $("#age").val(),
       street_address: $("#street_address").val(),
       city_address: $("#city_address").val(),
-      comments: $("comments").val(),
+      comments: $("comments").val()
     });
 
     //access our collection and add new instances to collection
@@ -172,7 +172,7 @@ App.Views.ListHolidays = Backbone.View.extend ({
         age: $("#update_age").val(),
         street_address: $("#update_street").val(),
         city_address: $("#update_city").val(),
-        comments: $("#update_comments").val()
+        comments: $("#update_comments").val(),
       });
 
       // Save Instance

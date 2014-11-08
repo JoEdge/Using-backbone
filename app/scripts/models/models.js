@@ -9,7 +9,7 @@ App.Models.Holiday = Backbone.Model.extend ({
     age: "",
     street_address: "",
     city_address:"",
-    comments: ""
+    comments: "",
   },
 
   idAttribute: "_id",
