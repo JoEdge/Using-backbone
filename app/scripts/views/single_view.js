@@ -8,7 +8,7 @@
     className: 'HolidaySingle',
 
     events: {
-      'click #commentButton' : 'updateHoliday',
+      'click #commentButton' : 'editHoliday',
       'click #delete' : 'deleteHoliday'
     },
 
@@ -17,8 +17,6 @@
     initialize: function (options) {
       this.options = options;
       this.render();
-
-    //  $('#holidayAdder').empty();
 
       // Get our Element On Our Page
       $('#happy_holidays').html(this.$el);
@@ -32,7 +30,7 @@
 
     },
 
-    updateHoliday: function (e) {
+    editHoliday: function (e) {
       e.preventDefault();
 
       // Update our Model Instance

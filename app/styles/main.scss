@@ -33,6 +33,7 @@ body {
   padding: 40px;
 
   h2 {
+    margin-top: 0px;
     font-size: 30px;
     line-height: 1;
     letter-spacing: -1px;
@@ -54,16 +55,30 @@ body {
       #addButton {
         text-decoration:none;
         border-radius: 10px;
-        margin-top:10px;
-        margin-left:47%;
+        margin-top: 10px;
+        margin-left: 40%;
         color: white;
         background-color: HSLA(280, 100%, 50%, 1);
       }
 }
 
 .main {
+  @include span-columns(8);
   float: right;
-  width: 600px;
+  margin-bottom:100px;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 30px;
+  background-color: #eee;
+  border-radius: 6px;
+  padding: 40px;
+
+  h2 {
+    margin-top: 0px;
+    font-size: 30px;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
 
   #happy_holidays .cheers {
     padding: 0px;
@@ -80,25 +95,35 @@ body {
     &:hover {
       background-color: hsla(349,100%,43%,1);
     }
+
+    #updateButton {
+      float: right;
+      color: black;
+      background-color: HSLA(280, 100%, 50%, 1);
+    }
   }
   }
+
+
+#update_event, #update_name {
+  float: left;
+  width: 45%;
+  margin: 3px auto;
+  color: black;
 }
 
-#commentButton {
-  color: white;
-  background-color: HSLA(280, 100%, 50%, 1);
-}
-
-#delete {
+#update_date, #update_age {
   float: right;
-  color: white;
-  background-color: HSLA(280, 100%, 50%, 1);
+  width: 45%;
+  margin: 3px auto;
+  color: black;
 }
 
-
-a {
-  color:white;
-  text-decoration: none;
+#update_street, #update_city, #update_comments {
+  width: 100%;
+  margin: 3px auto;
+  overflow: auto;
+  color: black;
 }
 
  #happy_holidays .HolidaySingle {
@@ -113,6 +138,18 @@ a {
     cursor: pointer;
     list-style:none;
   }
+
+  #commentButton {
+    color: white;
+    background-color: HSLA(280, 100%, 50%, 1);
+  }
+
+  #delete {
+    float: right;
+    color: white;
+    background-color: HSLA(280, 100%, 50%, 1);
+  }
+}
 }
 
   h5 {

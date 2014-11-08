@@ -11,8 +11,6 @@
       '' : 'home',
       'edit/:id' : 'editHoliday',
       'sort/:sortby' : 'home'
-
-
     },
 
     home: function (sortby) {

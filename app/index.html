@@ -28,11 +28,13 @@
         <h1>Guide to Gifts</h1>
       </div>
         <div class= "addInfo">
-          <h2>Gift Information</h1>
-          <div id= "holidayAdder"></div>
+          <h2>Gift Information</h2>
+          <div id= "holidayAdder">
+          </div>
         </div>
 
         <div class= "main">
+          <h2>Shopping List</h2>
           <div id="happy_holidays"></div>
         </div>
     </div>
@@ -52,8 +54,8 @@
 
     <script type="text/template" id="listHoliday">
       <li class="card" id="<%= _id %>">
-        <a href="#/edit/<%= _id %>">
           <div class="card-header">
+            <a href="#/edit/<%= _id %>"><button id="updateButton">Edit</button></a>
             <h5>Gift Info for <%= name %></h5>
             <p><%= event_shop %> is on <%=
 moment(date).format("MMM Do") %>.</p>
@@ -69,7 +71,6 @@ moment(date).format("MMM Do") %>.</p>
                 <h5>Gift Ideas</h5>
                   <p id="comment"><%= comments %></p></div>
           <% } %>
-        </a>
       </li>
     </script>
 
@@ -88,7 +89,7 @@ moment(date).format("MMM Do") %>.</p>
               <input type="text" value="<%= city_address %>" id="update_city" placeholder="City, State Zipcode"/>
               <textarea id="update_comments" placeholder="Gift Ideas"> <%= comments %></textarea>
           </div>
-            <button id="commentButton">Edit Gift Ideas</button>
+            <button id="commentButton">Update Gift Info</button>
             <button id="delete">Delete Info</button>
         </form>
       </li>
