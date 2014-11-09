@@ -57,20 +57,20 @@
 
     <script type="text/template" id="listHoliday">
       <li class="card" id="<%= _id %>">
+          <a href="#/edit/<%= _id %>"><div id="updateButton">Edit</div></a>
           <div class="card-header">
-            <a href="#/edit/<%= _id %>"><button id="updateButton">Edit</button></a>
-            <h5>Gift Info for <%= name %> <%= last %> </h5>
+            <h4>Gift Info for <%= name %> <%= last %></h4>
             <p><%= event_shop %> is on <%=
 moment(date).format("MMM Do") %>.</p>
           <% if(street_address !== '' && city_address !== '') { %>
               <div class="card-copy1">
-                <h5>Mailing Address</h5>
+                <h4>Mailing Address</h4>
                   <p id="address"><%= street_address %></br>
                    <%= city_address %></p></div>
           <% } %>
           <% if(comments !== '') { %>
               <div class="card-copy2">
-                <h5>Gift Ideas</h5>
+                <h4>Gift Ideas</h4>
                   <p id="comment"><%= comments %></p></div>
           <% } %>
       </li>
@@ -89,7 +89,7 @@ moment(date).format("MMM Do") %>.</p>
               <input type="text" value="<%= last %>" id="update_last" placeholder="Last Name"/>
               <input type="text" value="<%= street_address %>" id="update_street" placeholder="Street Address"/>
               <input type="text" value="<%= city_address %>" id="update_city" placeholder="City, State Zipcode"/>
-              <textarea id="update_comments" placeholder="Gift Ideas"> <%= comments %></textarea>
+              <textarea id="update_comments" value="<%= comments %>" placeholder="Gift Ideas"></textarea>
           </div>
             <button id="commentButton">Update Information</button>
             <button id="delete">Delete Info</button>
