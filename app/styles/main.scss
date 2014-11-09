@@ -2,7 +2,12 @@
 @import '../../bower_components/bourbon/dist/bourbon';
 @import '../../bower_components/neat/app/assets/stylesheets/neat';
 
+//Fonts//
+$Anton: 'Anton', sans-serif;
+$Raleway: 'Raleway', sans-serif;
+$Pacifico: 'Pacifico', cursive;
 
+//Colors//
 $grey: lightgrey;
 $watermelon: HSLA(357, 100%, 71%, 1.0);
 $blue: HSLA(194, 100%, 68%, 1);
@@ -11,7 +16,7 @@ $melrose: HSLA(272, 39%, 79%, 1);
 
 // Custom Styles
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: $Raleway;
   background: url('../images/chevron.jpg')no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -23,6 +28,7 @@ body {
   background: url('../images/dots.jpg');
 
   h1 {
+  font-family: $Pacifico;
   color: $watermelon;
   text-align: center;
   font-size: 60px;
@@ -53,6 +59,7 @@ body {
 
     h3 {
       margin-top: 100px;
+      font-family: $Anton;
       text-align: center;
       color: $watermelon;
     }
@@ -73,6 +80,7 @@ body {
 
   h2 {
     margin-top: 0px;
+    font-family: $Anton;
     font-size: 30px;
     line-height: 1;
     letter-spacing: -1px;
@@ -115,6 +123,7 @@ body {
   h2 {
     margin-top: 0px;
     margin-bottom: 15px;
+    font-family: $Anton;
     font-size: 30px;
     line-height: 1;
     letter-spacing: -1px;
@@ -203,6 +212,8 @@ body {
     border-top: 1px solid black;
     padding-left: 5px;
     border-bottom: 1px solid black;
+    padding-top: 5px;
+    padding-bottom: 5px;
     margin-bottom: 0px;
     color: $melrose;
     background-color: white;
@@ -211,13 +222,13 @@ body {
   .card-header p {
     padding-left: 5px;
     padding-right: 5px;
-    margin-top: 0px;
+    margin-top: 10px;
   }
 
   .card-copy1 p, .card-copy2 p {
     padding-right: 5px;
     padding-left: 5px;
-    margin-top: 0px;
+    margin-top: 10px;
     color: white;
   }
 }
