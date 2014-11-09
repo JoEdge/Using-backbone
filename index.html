@@ -19,28 +19,32 @@
       <div class="header">
         <h1>Guide to Gifts</h1>
       </div>
-        <div class= "addInfo">
+      <div class= "addInfo">
           <h2>Gift Information</h2>
           <div id= "holidayAdder">
+      </div>
+        </div>
+          <div class= "main">
+            <h2>Shopping List</h2>
+              <div class="sorts">
+                <a href="#/sort/date">Date</a> &bull;
+                <a href="#/sort/event_shop">Event</a> &bull;
+                <a href="#/sort/last">Last Name</a>
+              </div>
+            <div id="happy_holidays"></div>
           </div>
-        </div>
-
-        <div class= "main">
-          <h2>Shopping List</h2>
-          <div id="happy_holidays"></div>
-        </div>
     </div>
 
     <script type="text/template" id="addHoliday">
         <form id="holidayForm">
           <input type="text" id="event_shop" placeholder="Event"/>
           <input type="date" id="date" placeholder="Date"/>
-          <input type="text" id="name" placeholder="Giftee Name"/>
-          <input type="text" id="age" placeholder="Age"/>
+          <input type="text" id="name" placeholder="First Name"/>
+          <input type="text" id="last" placeholder="Last Name"/>
           <input type="text" id="street_address" placeholder="Street Address"/>
           <input type="text" id="city_address" placeholder="City, State Zipcode"/>
           <textarea id="comments" placeholder="Gift Ideas"></textarea>
-            <button id="addButton">Add Information</button>
+            <button id="addButton">New Gift</button>
         </form>
     </script>
 
@@ -48,10 +52,9 @@
       <li class="card" id="<%= _id %>">
           <div class="card-header">
             <a href="#/edit/<%= _id %>"><button id="updateButton">Edit</button></a>
-            <h5>Gift Info for <%= name %></h5>
+            <h5>Gift Info for <%= name %> <%= last %> </h5>
             <p><%= event_shop %> is on <%=
 moment(date).format("MMM Do") %>.</p>
-          </div>
           <% if(street_address !== '' && city_address !== '') { %>
               <div class="card-copy1">
                 <h5>Mailing Address</h5>
@@ -75,13 +78,13 @@ moment(date).format("MMM Do") %>.</p>
           <div class="card-copy">
               <input type="text" value="<%= event_shop %>" id="update_event" placeholder="Event"/>
               <input type="date" value="<%= date %>" id="update_date" placeholder="Date"/>
-              <input type="text" value="<%= name %>" id="update_name" placeholder="Giftee Name"/>
-              <input type="text" value="<%= age %>" id="update_age" placeholder="Age"/>
+              <input type="text" value="<%= name %>" id="update_name" placeholder="First Name"/>
+              <input type="text" value="<%= last %>" id="update_last" placeholder="Last Name"/>
               <input type="text" value="<%= street_address %>" id="update_street" placeholder="Street Address"/>
               <input type="text" value="<%= city_address %>" id="update_city" placeholder="City, State Zipcode"/>
               <textarea id="update_comments" placeholder="Gift Ideas"> <%= comments %></textarea>
           </div>
-            <button id="commentButton">Update Gift Info</button>
+            <button id="commentButton">Update Information</button>
             <button id="delete">Delete Info</button>
         </form>
       </li>
