@@ -38,7 +38,7 @@
         event_shop: $("#update_event").val(),
         date: $("#update_date").val(),
         name: $("#update_name").val(),
-        age: $("#update_age").val(),
+        last: $("#update_last").val(),
         street_address: $("#update_street").val(),
         city_address: $("#update_city").val(),
         comments: $("#update_comments").val(),

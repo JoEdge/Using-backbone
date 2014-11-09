@@ -6,10 +6,10 @@ App.Models.Holiday = Backbone.Model.extend ({
     event_shop: "",
     date: "",
     name: "",
-    age: "",
+    last: "",
     street_address: "",
     city_address:"",
-    comments: "",
+    comments: "", 
   },
 
   idAttribute: "_id",
@@ -17,7 +17,7 @@ App.Models.Holiday = Backbone.Model.extend ({
   initialize: function () {
     var n = this.get('name');
     //console.log( n + ' has been added');
-  }
+  },
 
 });
 
@@ -66,10 +66,10 @@ App.Views.AddHolidays = Backbone.View.extend ({
       event_shop: $("#event_shop").val(),
       date: $("#date").val(),
       name: $("#name").val(),
-      age: $("#age").val(),
+      last: $("#last").val(),
       street_address: $("#street_address").val(),
       city_address: $("#city_address").val(),
-      comments: $("comments").val()
+      comments: $("comments").val(),
     });
 
     //access our collection and add new instances to collection
@@ -92,7 +92,9 @@ App.Views.ListHolidays = Backbone.View.extend ({
   tagName: 'ul',
   className: 'cheers',
 
-    events: {},
+    events: {
+      'click h5' : 'showIt',
+    },
 
     template: _.template($('#listHoliday').html()),
 
@@ -116,12 +118,31 @@ App.Views.ListHolidays = Backbone.View.extend ({
     //clears our element
     this.$el.empty();
 
-    this.collection.each(function(instances){
-      self.$el.append(self.template(instances.toJSON()));
-    });
-
-    return this;
+    // Sorting On The Fly
+    if (this.options.sort != undefined) {
+      // Setting up a localized collection to sort by our sort param
+      var list_collection = this.collection.sortBy( function (model) {
+        return model.get(self.options.sort);
+      });
+      _.each(list_collection, function (s) {
+        self.$el.append(self.template(s.toJSON()));
+      })
+    } else {
+      // Sort from our default
+      this.collection.sort();
+      this.collection.each(function (s) {
+        self.$el.append(self.template(s.toJSON()));
+      });
+    }
+      return this;
   },
+
+  showIt: function(e) {
+    e.preventDefault();
+
+    $('p').slideToggle('slow');
+
+  }
 
 });
 
@@ -167,7 +188,7 @@ App.Views.ListHolidays = Backbone.View.extend ({
         event_shop: $("#update_event").val(),
         date: $("#update_date").val(),
         name: $("#update_name").val(),
-        age: $("#update_age").val(),
+        last: $("#update_last").val(),
         street_address: $("#update_street").val(),
         city_address: $("#update_city").val(),
         comments: $("#update_comments").val(),
@@ -214,13 +235,17 @@ App.Views.ListHolidays = Backbone.View.extend ({
     home: function (sortby) {
       new App.Views.AddHolidays();
       new App.Views.ListHolidays({ collection: App.all_holidays, sort: sortby});
+      $('.addInfo').show();
+      $('.sorts').show();
     },
 
 
     editHoliday: function (id) {
       var h = App.all_holidays.get(id);
       new App.Views.SingleHoliday({ holiday: h });
-    }
+      $('.addInfo').hide();
+      $('.sorts').hide();
+    },
 
   });
 

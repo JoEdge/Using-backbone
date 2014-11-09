@@ -6,10 +6,10 @@ App.Models.Holiday = Backbone.Model.extend ({
     event_shop: "",
     date: "",
     name: "",
-    age: "",
+    last: "",
     street_address: "",
     city_address:"",
-    comments: "",
+    comments: "", 
   },
 
   idAttribute: "_id",
@@ -17,7 +17,7 @@ App.Models.Holiday = Backbone.Model.extend ({
   initialize: function () {
     var n = this.get('name');
     //console.log( n + ' has been added');
-  }
+  },
 
 });
 

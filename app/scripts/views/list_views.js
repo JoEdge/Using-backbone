@@ -4,7 +4,9 @@ App.Views.ListHolidays = Backbone.View.extend ({
   tagName: 'ul',
   className: 'cheers',
 
-    events: {},
+    events: {
+      'click h5' : 'showIt',
+    },
 
     template: _.template($('#listHoliday').html()),
 
@@ -28,12 +30,31 @@ App.Views.ListHolidays = Backbone.View.extend ({
     //clears our element
     this.$el.empty();
 
-    this.collection.each(function(instances){
-      self.$el.append(self.template(instances.toJSON()));
-    });
-
-    return this;
+    // Sorting On The Fly
+    if (this.options.sort != undefined) {
+      // Setting up a localized collection to sort by our sort param
+      var list_collection = this.collection.sortBy( function (model) {
+        return model.get(self.options.sort);
+      });
+      _.each(list_collection, function (s) {
+        self.$el.append(self.template(s.toJSON()));
+      })
+    } else {
+      // Sort from our default
+      this.collection.sort();
+      this.collection.each(function (s) {
+        self.$el.append(self.template(s.toJSON()));
+      });
+    }
+      return this;
   },
+
+  showIt: function(e) {
+    e.preventDefault();
+
+    $('p').slideToggle('slow');
+
+  }
 
 });
 
