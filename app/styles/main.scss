@@ -2,41 +2,84 @@
 @import '../../bower_components/bourbon/dist/bourbon';
 @import '../../bower_components/neat/app/assets/stylesheets/neat';
 
+
+$grey: lightgrey;
+$watermelon: HSLA(357, 100%, 71%, 1.0);
+$blue: HSLA(194, 100%, 68%, 1);
+$melrose: HSLA(272, 39%, 79%, 1);
+
+
 // Custom Styles
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-image: url('../images/bow.jpg');
+  background: url('../images/chevron.jpg')no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
 }
 
-.holiday_page {
-  @include outer-container;
-
 .header {
-  @include span-columns(12);
+  width:100%;
+  background: url('../images/dots.jpg');
 
   h1 {
-  color: white;
+  color: $watermelon;
   text-align: center;
   font-size: 60px;
   }
 }
 
+.holiday_page {
+  @include outer-container;
+
+.reminder {
+  @include span-columns(3.5);
+  position: relative;
+  float: left;
+  height: 400px;
+  margin-top: 60px;
+  border-radius: 6px;
+  padding: 5px;
+  z-index: 1;
+  background-color: white;
+  border: 3px $grey solid;
+
+  .pretty {
+    @include span-columns(12);
+    position: relative;
+    height: 341px;
+    margin-top: 28px;
+    background: url('../images/triangle.png');
+
+    h3 {
+      margin-top: 100px;
+      text-align: center;
+      color: $watermelon;
+    }
+  }
+
+}
+
 .addInfo {
-  @include span-columns(4);
+  @include span-columns(3);
+  position: absolute;
   float: left;
   margin-bottom:100px;
   font-size: 18px;
   font-weight: 200;
   line-height: 30px;
-  background-color: #eee;
+  background-color: white;
+  border: 3px $grey solid;
   border-radius: 6px;
   padding: 40px;
+  z-index: 2;
 
   h2 {
     margin-top: 0px;
     font-size: 30px;
     line-height: 1;
     letter-spacing: -1px;
+    color: $melrose;
   }
 
     #street_address, #city_address, #comments {
@@ -58,7 +101,7 @@ body {
         margin-top: 10px;
         margin-left: 64%;
         color: white;
-        background-color: HSLA(280, 100%, 50%, 1);
+        background-color: $melrose;
       }
 }
 
@@ -69,7 +112,8 @@ body {
   font-size: 18px;
   font-weight: 200;
   line-height: 30px;
-  background-color: #eee;
+  background-color: white;
+  border: 3px $grey solid;
   border-radius: 6px;
   padding: 40px;
 
@@ -79,6 +123,7 @@ body {
     font-size: 30px;
     line-height: 1;
     letter-spacing: -1px;
+    color: $melrose;
   }
 
   #happy_holidays .cheers {
@@ -87,7 +132,7 @@ body {
 
   li{
     @include span-columns(4 of 8);
-    background-color: hsla(215,55%,39%,1);
+    background-color: $watermelon;
     color: white;
     padding: 10px;
     border-radius: 10px;
@@ -96,13 +141,13 @@ body {
     list-style:none;
 
     &:hover {
-      background-color: hsla(349,100%,43%,1);
+      background-color: $blue;
     }
 
     #updateButton {
       float: right;
       color: black;
-      background-color: HSLA(280, 100%, 50%, 1);
+      background-color: $melrose;
     }
   }
   }
@@ -132,7 +177,7 @@ body {
   padding: 0px;
 
   li{
-    background-color: hsla(215,55%,39%,1);
+    background-color: $watermelon;
     color: white;
     padding: 10px;
     border-radius: 10px;
@@ -143,13 +188,13 @@ body {
 
   #commentButton {
     color: white;
-    background-color: HSLA(280, 100%, 50%, 1);
+    background-color: $melrose;
   }
 
   #delete {
     float: right;
     color: white;
-    background-color: HSLA(280, 100%, 50%, 1);
+    background-color: $melrose;
   }
 }
 }
@@ -159,7 +204,7 @@ body {
     padding-left: 5px;
     border-bottom: 1px solid black;
     margin-bottom: 0px;
-    color: hsla(215,55%,39%,1);
+    color: $melrose;
     background-color: white;
   }
 
