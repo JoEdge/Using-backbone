@@ -64,8 +64,8 @@
     </script>
 
     <script type="text/template" id="listHoliday">
-      <li class="card" id="<%= _id %>">
-          <a href="#/edit/<%= _id %>"><div id="updateButton">Edit</div></a>
+      <li class="card" id="<%= objectId %>">
+          <a href="#/edit/<%= objectId %>"><div id="updateButton">Edit</div></a>
           <div class="card-header">
             <h4>Gift Info for <%= name %> <%= last %></h4>
             <p><%= event_shop %> is on <%=
@@ -85,7 +85,7 @@ moment(date).format("MMM Do") %>.</p>
     </script>
 
     <script type="text/template" id="singleHoliday">
-      <li class="card" id="<%= _id %>">
+      <li class="card" id="<%= objectId %>">
         <form id="holidayForm_update">
           <div class="card-header">
             <p><%= name %> <%= last %></p>
@@ -105,18 +105,19 @@ moment(date).format("MMM Do") %>.</p>
       </li>
     </script>
 
-    <script src="//www.parsecdn.com/js/parse-1.3.1.min.js"></script>
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="../bower_components/jquery/dist/jquery.js"></script>
     <script src="../bower_components/underscore/underscore.js"></script>
     <!-- <script src="../bower_components/backbone/backbone.js"></script> -->
-    <script src="../bower_components/pickadate/lib/picker.js"></script>
-    <script src="../bower_components/pickadate/lib/picker.date.js"></script>
+    <!--<script src="../bower_components/pickadate/lib/picker.js"></script> -->
+    <!--<script src="../bower_components/pickadate/lib/picker.date.js"></script> -->
     <script src="../bower_components/moment/moment.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
+
+    <script src="//www.parsecdn.com/js/parse-1.3.1.min.js"></script>
 
         <!-- build:js scripts/main.js -->
         <script src="scripts/initial.js"></script>

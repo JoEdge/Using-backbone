@@ -33,7 +33,7 @@ App.Views.AddHolidays = Parse.View.extend ({
       comments: $("#comments").val(),
     });
 
-    //Because parse uses an older model of Backbone the below function wont work. CHange to what is below
+    //Because parse uses an older model of Backbone the original function wont work. CHange to what is below
     //access our collection and add new instances to collection
     //App.all_holidays.add(smile);
 

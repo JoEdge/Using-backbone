@@ -4,7 +4,7 @@
 
     initialize: function () {
       // Light the Fire
-      Backbone.history.start();
+      Parse.history.start();
     },
 
     routes: {
