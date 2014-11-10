@@ -1,3 +1,9 @@
+window.App ={};
+App.Models = {};
+App.Collections = {};
+App.Views = {};
+App.Routers = {};
+
 (function () {
 
 App.Models.Holiday = Backbone.Model.extend ({
