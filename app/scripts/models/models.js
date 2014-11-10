@@ -12,6 +12,8 @@ App.Models.Holiday = Parse.Object.extend ({
     comments: "",
   },
 
+  className: 'Shop',
+
   idAttribute: "_id",
 
   initialize: function () {
