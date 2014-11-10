@@ -32,6 +32,21 @@ App.Models.Holiday = Parse.Object.extend ({
 }());
 
 (function () {
+
+  App.Models.Note = Parse.Object.extend({
+
+    className: 'Note',
+
+    defaults: {
+      notes: "",
+    },
+
+  });
+
+
+}());
+
+(function () {
 //var my_server = "http://tiy-atl-fe-server.herokuapp.com/collections/joanna3";
 
 App.Collections.HolidaysCollection = Parse.Collection.extend ({
@@ -174,7 +189,7 @@ App.Views.ListHolidays = Parse.View.extend ({
     events: {
       'click #commentButton' : 'editHoliday',
       'click #delete' : 'deleteHoliday',
-    //  'click #addNote' : 'addNote'
+      'click #addNote' : 'addNote',
     },
 
     template: _.template($('#singleHoliday').html()),
@@ -192,41 +207,43 @@ App.Views.ListHolidays = Parse.View.extend ({
       this.$el.empty();
       this.$el.html(this.template(this.options.holiday.toJSON()));
 
-  //    var noteTemplate = _.template($('#noteTemp').html());
-  //    var notes_query = new Parse.Query(App.Models.Note);
+      var noteTemplate = _.template($('#noteTemp').html());
+      var notes_query = new Parse.Query(App.Models.Note);
 
-  //    notes_query.equalTo('parent', this.options.holiday);
+      notes_query.equalTo('parent', this.options.holiday);
 
-  //    this.$el.append('<h2>Shopping Notes</h2><ul class="notes"></ul>');
+      this.$el.append('<h2>Shopping Notes</h2><ul class="notes"></ul>');
 
-  //    notes_query.find({
-  //      success: function (results) {
+      notes_query.find({
+        success: function (results) {
 
-  //        _.each(results, function(notes) {
-  //          $('ul.notes').append(noteTemplate(notes.toJSON()));
-  //        })
-  //      }
-  //    })
+          _.each(results, function(notes) {
+            $('ul.notes').append(noteTemplate(notes.toJSON()));
+          })
+        }
+      })
     },
 
-//    addNote: function (e) {
-  //    e.preventDefault();
+    addNote: function (e) {
+      e.preventDefault();
 
-  //    var note = new App.Models.Note({
+      console.log("ha");
 
-    //    notes: $('#notes').val(),
-    //    parent: this.options.holiday
+      var noted = new App.Models.Note({
 
-  //    });
+        notes: $('#notes').val(),
+        parent: this.options.holiday
 
-    //  note.save(null, {
-      //  success: function () {
-        //  console.log('Note has been added');
-        //  App.router.navigate('', {trigger: true});
-    //    }
-    //  });
+      });
 
-  //  },
+      noted.save(null, {
+        success: function () {
+          console.log('Note has been added');
+          App.router.navigate('', {trigger: true});
+        }
+     });
+
+    },
 
     editHoliday: function (e) {
       e.preventDefault();
