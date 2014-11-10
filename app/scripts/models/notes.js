@@ -5,7 +5,7 @@
     className: 'Note',
 
     defaults: {
-      notes: ''
+      notes: "",
     },
 
   });
