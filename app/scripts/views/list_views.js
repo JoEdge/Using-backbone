@@ -1,5 +1,5 @@
 (function () {
-App.Views.ListHolidays = Backbone.View.extend ({
+App.Views.ListHolidays = Parse.View.extend ({
 
   tagName: 'ul',
   className: 'cheers',

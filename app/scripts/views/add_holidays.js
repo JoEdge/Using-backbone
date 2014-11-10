@@ -1,7 +1,7 @@
 
 (function () {
 
-App.Views.AddHolidays = Backbone.View.extend ({
+App.Views.AddHolidays = Parse.View.extend ({
 
   events: {
     'click #addButton' : 'addNewHoliday',
@@ -33,11 +33,17 @@ App.Views.AddHolidays = Backbone.View.extend ({
       comments: $("#comments").val(),
     });
 
+    //Because parse uses an older model of Backbone the below function wont work. CHange to what is below
     //access our collection and add new instances to collection
-    App.all_holidays.add(smile);
+    //App.all_holidays.add(smile);
 
     //save our holiday
-    smile.save();
+    //parse only because model is connected to database vs backbone where collection is connected to database
+    smile.save(null, {
+      success: function () {
+        App.all_holidays.add(smile);
+      }
+    });
 
     //clear my form
     $("#holidayForm")[0].reset();

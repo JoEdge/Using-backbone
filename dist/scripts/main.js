@@ -6,7 +6,7 @@ App.Routers = {};
 
 (function () {
 
-App.Models.Holiday = Backbone.Model.extend ({
+App.Models.Holiday = Parse.Object.extend ({
 
     defaults: {
     event_shop: "",
@@ -15,7 +15,7 @@ App.Models.Holiday = Backbone.Model.extend ({
     last: "",
     street_address: "",
     city_address:"",
-    comments: "", 
+    comments: "",
   },
 
   idAttribute: "_id",
@@ -30,14 +30,14 @@ App.Models.Holiday = Backbone.Model.extend ({
 }());
 
 (function () {
-var my_server = "http://tiy-atl-fe-server.herokuapp.com/collections/joanna3";
+//var my_server = "http://tiy-atl-fe-server.herokuapp.com/collections/joanna3";
 
-App.Collections.HolidaysCollection = Backbone.Collection.extend ({
+App.Collections.HolidaysCollection = Parse.Collection.extend ({
   model: App.Models.Holiday,
     comparator: function (model) {
     return (model.get('date'));
     },
-  url: my_server,
+  //url: my_server,
 
 });
 
@@ -46,7 +46,7 @@ App.Collections.HolidaysCollection = Backbone.Collection.extend ({
 
 (function () {
 
-App.Views.AddHolidays = Backbone.View.extend ({
+App.Views.AddHolidays = Parse.View.extend ({
 
   events: {
     'click #addButton' : 'addNewHoliday',
@@ -78,11 +78,17 @@ App.Views.AddHolidays = Backbone.View.extend ({
       comments: $("#comments").val(),
     });
 
+    //Because parse uses an older model of Backbone the below function wont work. CHange to what is below
     //access our collection and add new instances to collection
-    App.all_holidays.add(smile);
+    //App.all_holidays.add(smile);
 
     //save our holiday
-    smile.save();
+    //parse only because model is connected to database vs backbone where collection is connected to database
+    smile.save(null, {
+      success: function () {
+        App.all_holidays.add(smile);
+      }
+    });
 
     //clear my form
     $("#holidayForm")[0].reset();
@@ -93,7 +99,7 @@ App.Views.AddHolidays = Backbone.View.extend ({
 }());
 
 (function () {
-App.Views.ListHolidays = Backbone.View.extend ({
+App.Views.ListHolidays = Parse.View.extend ({
 
   tagName: 'ul',
   className: 'cheers',
@@ -158,7 +164,7 @@ App.Views.ListHolidays = Backbone.View.extend ({
 
 (function () {
 
-  App.Views.SingleHoliday = Backbone.View.extend({
+  App.Views.SingleHoliday = Parse.View.extend({
 
     tagName: 'ul',
     className: 'HolidaySingle',
@@ -225,7 +231,7 @@ App.Views.ListHolidays = Backbone.View.extend ({
 
 (function () {
 
-  App.Routers.HolidayRouter = Backbone.Router.extend({
+  App.Routers.HolidayRouter = Parse.Router.extend({
 
     initialize: function () {
       // Light the Fire
@@ -257,19 +263,21 @@ App.Views.ListHolidays = Backbone.View.extend ({
 
 }());
 
-(function () {
+Parse.initialize("XOGK5nk2lWKVLAO0VVWxiLwMJ6Td6qfFtmwVXQxc", "eo2L7dhhVf0Y56cOCeRXbkaKmimxLdkb7f0RmzUM");
 
-App.all_holidays = new App.Collections.HolidaysCollection();
+//(function () {
 
-App.all_holidays.fetch().done(function () {
+//App.all_holidays = new App.Collections.HolidaysCollection();
+
+//App.all_holidays.fetch().done(function () {
 
   //Below gets moved to Router files
   //new App.Views.AddHolidays();
 
   //new App.Views.ListHolidays({ collection: App.all_holidays});
 
-  App.router = new App.Routers.HolidayRouter();
+//  App.router = new App.Routers.HolidayRouter();
 
-});
+//});
 
-}());
+//}());

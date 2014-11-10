@@ -2,7 +2,7 @@
 
 (function () {
 
-  App.Views.SingleHoliday = Backbone.View.extend({
+  App.Views.SingleHoliday = Parse.View.extend({
 
     tagName: 'ul',
     className: 'HolidaySingle',

@@ -1,6 +1,6 @@
 (function () {
 
-App.Models.Holiday = Backbone.Model.extend ({
+App.Models.Holiday = Parse.Object.extend ({
 
     defaults: {
     event_shop: "",
@@ -9,7 +9,7 @@ App.Models.Holiday = Backbone.Model.extend ({
     last: "",
     street_address: "",
     city_address:"",
-    comments: "", 
+    comments: "",
   },
 
   idAttribute: "_id",
