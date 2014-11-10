@@ -8,13 +8,13 @@ App.Models.Holiday = Parse.Object.extend ({
     name: "",
     last: "",
     street_address: "",
-    city_address:"",
+    city_address: "",
     comments: "",
   },
 
   className: 'Shop',
 
-  idAttribute: "_id",
+  idAttribute: "objectId",
 
   initialize: function () {
     var n = this.get('name');

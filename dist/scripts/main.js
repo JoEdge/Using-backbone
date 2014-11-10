@@ -14,13 +14,13 @@ App.Models.Holiday = Parse.Object.extend ({
     name: "",
     last: "",
     street_address: "",
-    city_address:"",
+    city_address: "",
     comments: "",
   },
 
   className: 'Shop',
 
-  idAttribute: "_id",
+  idAttribute: "objectId",
 
   initialize: function () {
     var n = this.get('name');
@@ -173,7 +173,8 @@ App.Views.ListHolidays = Parse.View.extend ({
 
     events: {
       'click #commentButton' : 'editHoliday',
-      'click #delete' : 'deleteHoliday'
+      'click #delete' : 'deleteHoliday',
+    //  'click #addNote' : 'addNote'
     },
 
     template: _.template($('#singleHoliday').html()),
@@ -189,10 +190,43 @@ App.Views.ListHolidays = Parse.View.extend ({
     render: function () {
 
       this.$el.empty();
-
       this.$el.html(this.template(this.options.holiday.toJSON()));
 
+  //    var noteTemplate = _.template($('#noteTemp').html());
+  //    var notes_query = new Parse.Query(App.Models.Note);
+
+  //    notes_query.equalTo('parent', this.options.holiday);
+
+  //    this.$el.append('<h2>Shopping Notes</h2><ul class="notes"></ul>');
+
+  //    notes_query.find({
+  //      success: function (results) {
+
+  //        _.each(results, function(notes) {
+  //          $('ul.notes').append(noteTemplate(notes.toJSON()));
+  //        })
+  //      }
+  //    })
     },
+
+//    addNote: function (e) {
+  //    e.preventDefault();
+
+  //    var note = new App.Models.Note({
+
+    //    notes: $('#notes').val(),
+    //    parent: this.options.holiday
+
+  //    });
+
+    //  note.save(null, {
+      //  success: function () {
+        //  console.log('Note has been added');
+        //  App.router.navigate('', {trigger: true});
+    //    }
+    //  });
+
+  //  },
 
     editHoliday: function (e) {
       e.preventDefault();
@@ -225,7 +259,7 @@ App.Views.ListHolidays = Parse.View.extend ({
       // Return to home page
       App.router.navigate('', {trigger: true});
 
-    }
+    },
 
   });
 
