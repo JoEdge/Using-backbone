@@ -188,7 +188,7 @@ body {
   li{
     background-color: $watermelon;
     color: white;
-    padding: 10px;
+    padding: 40px;
     border-radius: 10px;
     margin-bottom: 10px;
     cursor: pointer;
@@ -204,6 +204,10 @@ body {
     float: right;
     color: white;
     background-color: $melrose;
+  }
+
+  .notes li{
+    padding: 10px;
   }
 }
 }
@@ -231,4 +235,26 @@ body {
     margin-top: 10px;
     color: white;
   }
+}
+
+#formNote {
+  margin-top: 10px;
+  color: black;
+}
+
+#addNote {
+  float: left;
+  color: white;
+  background-color: $melrose;
+}
+
+#deleteButton2 {
+  float: right;
+  width: 15%;
+  height: 40px;
+  border-radius: 100%;
+  padding-top: 10px;
+  text-align: center;
+  color: black;
+  background-color: $melrose;
 }

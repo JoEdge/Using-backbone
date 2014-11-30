@@ -87,7 +87,7 @@ moment(date).format("MMM Do") %>.</p></div>
     </script>
 
     <script type="text/template" id="noteTemp">
-      <li><%= notes %></li>
+      <li><%= notes %></li><div id="deleteButton2">Delete</div>
     </script>
 
     <script type="text/template" id="singleHoliday">
@@ -103,7 +103,7 @@ moment(date).format("MMM Do") %>.</p></div>
               <input type="text" value="<%= last %>" id="update_last" placeholder="Last Name"/>
               <input type="text" value="<%= street_address %>" id="update_street" placeholder="Street Address"/>
               <input type="text" value="<%= city_address %>" id="update_city" placeholder="City, State Zipcode"/>
-              <textarea value="<%= comments %>" id="update_comments" placeholder="Gift Ideas"></textarea>
+              <textarea id="update_comments" placeholder="Gift Ideas"><%= comments %></textarea>
           </div>
             <button id="commentButton">Update Information</button>
             <button id="delete">Delete Info</button>

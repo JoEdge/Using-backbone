@@ -1,6 +1,6 @@
 #Using Backbone
 
-##Recreation of personal git hub page
+##Gift List
 
 ####How to use it
 
