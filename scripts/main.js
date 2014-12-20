@@ -239,7 +239,7 @@ App.Views.ListHolidays = Parse.View.extend ({
       noted.save(null, {
         success: function () {
           console.log('Note has been added');
-          App.router.navigate('', {trigger: true});
+          App.router.navigate('edit/', {trigger: true});
         }
      });
 
@@ -277,6 +277,7 @@ App.Views.ListHolidays = Parse.View.extend ({
       App.router.navigate('', {trigger: true});
 
     },
+
 
   });
 
